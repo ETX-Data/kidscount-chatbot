@@ -398,7 +398,13 @@ RESPONSE STYLE:
     try {
       const response = await fetch('/.netlify/functions/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: history
+        })
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error?.message || 'API error');
