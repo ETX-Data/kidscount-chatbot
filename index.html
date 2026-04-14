@@ -398,7 +398,11 @@ RESPONSE STYLE:
     try {
       const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': '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',
+          'anthropic-version': '2023-06-01'
+        },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
           max_tokens: 1000,
